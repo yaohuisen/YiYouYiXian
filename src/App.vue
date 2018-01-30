@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <mains/>
+
     <router-view/>
   </div>
 </template>
 
 <script>
-	import mains from "./components/main"
+
 export default {
   name: 'App',
   components:{
-  	mains
+  	
   }
 }
 </script>
