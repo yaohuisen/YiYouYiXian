@@ -3,7 +3,7 @@
 	<div class="banner">
 		<mt-swipe :auto="4000">
 		  <mt-swipe-item v-for="item in banners">
-		  	<img :src="item.path"/>
+		  	<img  v-lazy.container="item.path" class="imgs"/>
 		  </mt-swipe-item>	
 		</mt-swipe>
 	</div>	
@@ -62,7 +62,7 @@
 				var pw = $(".radio p").width();
 				var left = parseInt($(".radio p").css("left"))
 				var lw = $(".radio .left").width();
-				console.log(left)
+				
 				var f = lw - pw;
 				
 				setInterval(function(){
@@ -184,4 +184,7 @@
 		font-size: 0.14rem;
 		color: #333;
 	}
+	.banner::-webkit-scrollbar {/*隐藏滚轮*/
+			display: none;
+		}
 </style>

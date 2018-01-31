@@ -15,6 +15,11 @@ module.exports = {
             target: 'http://w.1x1u.cn', //目标服务器
             changeOrigin: true, //开启代理
             pathRewrite: { '^/wx': '/wx' }  //对访问路径进行替换操作
+       },
+       '/good': {//这里是需要匹配的路径，如果匹配上了，则代理到目标服务器上
+            target: 'http://localhost:3000', //目标服务器
+            changeOrigin: true, //开启代理
+            pathRewrite: { '^/good': '/good' }  //对访问路径进行替换操作
         }
     },
 

@@ -15,8 +15,8 @@
 			<banner></banner>
 			<list></list>
 		</div>
-		
-		<div class="foot">
+		<foot></foot>
+		<!--<div class="foot">
 			<ul>
 				<li>
 					<i class="iconfont">&#xe636;</i>
@@ -35,13 +35,14 @@
 					<p>吃货中心</p>	
 				</li>
 			</ul>
-		</div>
+		</div>-->
 	</div>
 </template>
 
 <script>
 	import banner from "./banner";
 	import list from "./list";
+	import foot from "./foot";
 	export default {
 		name : "main",
 		data(){
@@ -51,7 +52,8 @@
 		},
 		components:{
 			banner,
-			list
+			list,
+			foot
 		},
 		methods:{
 			changeFlag(){
@@ -76,7 +78,7 @@
 		font-size: 0.14rem;
 		flex-direction: column;
 	}
-	.foot{
+	/*.foot{
 		width: 100%;
 		height: 0.5rem;
 		
@@ -112,7 +114,7 @@
 		width: 100%;
 		text-align: center;
 		font-size: 0.12rem;
-	}
+	}*/
 	.header{
 		width: 100%;
 		flex: 1;

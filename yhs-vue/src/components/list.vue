@@ -8,7 +8,7 @@
 			</div>
 			<div class="cell">
 				<div class="recommend_cell" v-for="item in recommend">
-						<router-link :to="{name:'Detail', params:{fid: item.product}}"><img :src="item.image"/></router-link>
+						<router-link :to="{name:'Detail', params:{fid: item.product}}"><img v-lazy.container="item.image" class="imgs"/></router-link>
 				</div>
 			</div>
 		</div>
@@ -22,7 +22,7 @@
 				<div class="swiper-container">
 				  <div class="swiper-wrapper">
 				    <div class="swiper-slide" v-for="item in channel">
-				    	 <img :src="item.image" />
+				    	 <img v-lazy.container="item.image"  class="imgs"/>
 				    </div>		    
 				</div>
 			</div>
@@ -37,7 +37,7 @@
 								<ul>	
 									<li v-for="it in item.products">
 										<div class="image">
-											<img :src="it.image"/>
+											<router-link :to="{name:'Detail', params:{fid: it.id}}"><img :src="it.image"/></router-link>
 										</div>
 										<p>{{it.name}}</p>
 										<span>{{it.price}}</span>
@@ -104,28 +104,20 @@ export default {
 		getFruits(){
 			axios.get("/wx/special/homeSpecial")
 			.then((res)=>{
-				console.log(res)
+				
 				this.data = res.data.specials;
+				console.log(this.data)
 				var that = this;
 				this.$nextTick(function(){
 					var liw = parseInt($(".fruit li").css("width"));
 					
 					var len = $(".fruit").length;
-					for(var i =0;i < len;i ++){
+					for(let i =0;i < len;i ++){
 
 						var lilen = $(".fruit").eq(i).find("li").length;
 
 						$(".fruit").eq(i).find(".ul").css({width:(lilen+1)*liw})
-
-
-						setInterval(function(){
-							var offsetLeft = $(".fruit").eq(i).find(".ul").position()
-//							console.log(offsetLeft)
-//							$(".fruit").eq(i).find(".ul").css({left:offsetLeft-liw})
-//							if(parseInt($(".fruit").eq(i).find(".ul").css("right")) <= 0){
-//								$(".fruit").eq(i).find(".ul").css("left",0)
-	//						}
-						},3000)
+				
 					}
 
 				})
@@ -134,6 +126,7 @@ export default {
 	
 	}
 }
+
 </script>
 
 <style scoped>
@@ -163,6 +156,9 @@ img{
 }
 .plate h1,.listA h1{
 	font-size: 0.14rem;
+}
+.imgs{
+	min-height: 1rem;
 }
 .plate .left_con,.plate .right_con{
 	width: 0.2rem;
@@ -205,7 +201,7 @@ img{
 }
 
 .listA .cell{
-	width: 100%;
+	width: 3.09rem;
 	overflow: auto;
 	position: relative;
 	height: 1.56rem;
@@ -243,4 +239,5 @@ img{
 	width: 100%;
 	
 }
+
 </style>
